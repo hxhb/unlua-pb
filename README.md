@@ -23,5 +23,6 @@ FLuaProtobuf& LuaProtobuf = FModuleManager::LoadModuleChecked<FLuaProtobuf>(TEXT
 LuaProtobuf.RegisterLuaLib(L);
 ```
 
-注意：模块注册时已经把`protoc.lua`和`serpent.lua`都添加了，不需要再把他们放到`Content/Script`下。
+模块注册时已经把`protoc.lua`和`serpent.lua`都添加了，不需要再把他们放到`Content/Script`下。
 
+**注意**：lua-protobuf官方版本在ue中当使用pb.loadfile的时候会用问题，它直接使用了fopen来打开传入的文件路径，这样不会基于ue的ufs来查找文件，所以会找不到pak里的文件，需要把lpb_loadfile这部分给改了。
