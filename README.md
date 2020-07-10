@@ -26,3 +26,5 @@ LuaProtobuf.RegisterLuaLib(L);
 模块注册时已经把`protoc.lua`和`serpent.lua`都添加了，不需要再把他们放到`Content/Script`下。
 
 **注意**：lua-protobuf官方版本在ue中当使用pb.loadfile的时候会用问题，它直接使用了fopen来打开传入的文件路径，这样不会基于ue的ufs来查找文件，所以会找不到pak里的文件，需要把lpb_loadfile这部分给改了，本项目内我已经修改支持，使用`pb.loadufsfile`即可。
+
+>`pb.loadufsfile`应该传递的是`FPaths::ProjectContentDir()` + proto文件相对于Content的路径，如`FPaths::Combine(FPaths::ProjectContentDir(),TEXT("Script/Msg.proto"))`。不过`FPaths::Combine`这个函数在UnLua官方版本里没有导出，我在[debugable-unlua](https://github.com/hxhb/debugable-unlua)里导出了。
