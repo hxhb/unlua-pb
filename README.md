@@ -40,6 +40,6 @@ protoc.exe -o Msg.pb Msg.protoc
 ```cpp
 local filepath = UE4.FPaths.Combine(FPaths.ProjectContentDir(),"Script/TestMsg.proto")
 local protoContent = UE4.FFileHelper.LoadFileToArray(filepath)
-	protoc:load(protoContent,filepath)
+protoc:load(protoContent)
 ```
 UnLua官方版本没有导出`UE4.FFileHelper.LoadFileToArray`这个符号到lua，我在[debugable-unlua](https://github.com/hxhb/debugable-unlua)里导出了。
