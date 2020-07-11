@@ -29,7 +29,13 @@ LuaProtobuf.RegisterLuaLib(L);
 
 >`pb.loadufsfile`应该传递的是`FPaths::ProjectContentDir()` + proto文件相对于Content的路径，如`FPaths::Combine(FPaths::ProjectContentDir(),TEXT("Script/Msg.pb"))`。不过`FPaths::Combine`这个函数在UnLua官方版本里没有导出，我在[debugable-unlua](https://github.com/hxhb/debugable-unlua)里导出了。
 
-**注意**:`pb.loadufsfile`只能用来加载`*.pb`的文件，不能用来加载`*.protoc`的文件，如果想要直接加载`*.protoc`的文本可以通过下列方法：
+**注意**:`pb.loadufsfile`只能用来加载`*.pb`的文件，不能用来加载`*.protoc`的文件。
+`*pb`可以通过protobuf中的`protoc.exe`来生成：
+
+```bash
+protoc.exe -o Msg.pb Msg.protoc
+```
+如果想要直接加载`*.protoc`的文本可以通过下列方法：
 
 ```cpp
 local filepath = UE4.FPaths.Combine(FPaths.ProjectContentDir(),"Script/TestMsg.proto")
