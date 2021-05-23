@@ -1,5 +1,6 @@
 #ifndef pb_h
 #define pb_h
+#pragma warning(disable: 4706)
 
 #ifndef PB_NS_BEGIN
 # ifdef __cplusplus

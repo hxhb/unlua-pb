@@ -8,7 +8,6 @@
 # pragma warning(disable: 4996) /* setmode/fopen */
 #endif
 
-#define PB_STATIC_API
 #include "pb.h"
 
 #include "Misc/FileHelper.h"
